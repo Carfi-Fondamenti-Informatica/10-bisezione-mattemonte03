@@ -1,47 +1,37 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-double f(double y , double &fy)
-{
-    fy = y * y * cos(y) + 1;
-    return fy;
+
+double f ( double x, double &fx){
+fx=pow(x, 2)*cos(x) + 1;
+    return fx;
 }
 
 int main() {
-double a=0,b=0,fx=0,x=0,err=2;
-int g=0;
-while(f(a,fy)*f(b,fy)>=0) {
-    cout <<"inserire estremi"<<endl;
-    cin >> a >> b;
+double a=0, b=0,err=0, x=0, fx=0;
 
-    if (f(a,fy)*f(b,fy) < 0){
-        break;
+do {
+    cout << "inserire estremi"<< endl;
+    cin >> a >> b ;
+} while (f(a, fx)*f(b, fx)>=0);
+
+do {
+    if ( f(x, fx)!=0) {
+        x = (a + b) / 2;
+        if (f(x, fx) * f(b, fx) < 0) {
+            a = x;
+        } else {
+            b = x;
+        }
+        err = abs((b - a) / 2);
     }
-}
+} while ( err >= 0.000001);
 
-while (f(x,fy)!=0) {
-    x=(a+b)/2;
-        if (f(a, fy) * f(b, fy) < 0) {
-            a = y;
-        }
-        else{
-        b = y;
-        }
-    err = abs((a - b)) / 2;
-        if (err < 1e-6){
-            break;}
-}
+x=x*10000;
+x=(int)x;
+x=x/10000;
 
-y=y*10000;
-y=(int)y;
-y=y/10000;
-cout<< y;
-
-
-
+cout << x << endl;
 
 return 0;
-
-
-
 }
