@@ -7,7 +7,7 @@ double f(double x,double &fx){
 }
 
 int main() {
-   double a=0, b=0, x=0, fx, err;
+   double a=0, b=0, x=0, fx=0, err=1;
     while (f(a, fx) * f(b, fx) >= 0) {
         cout << "inserire estremi" << endl;
         cin >> a >> b;
