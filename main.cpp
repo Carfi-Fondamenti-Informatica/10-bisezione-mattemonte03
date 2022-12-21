@@ -28,6 +28,9 @@ int main() {
             break;
         }
     }
+    x=x*10000;
+    x=(int)x;
+    x=x/10000;
     cout << x << endl;
 
 
